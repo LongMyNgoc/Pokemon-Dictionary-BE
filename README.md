@@ -38,9 +38,8 @@ Hệ thống sẽ chạy trên **localhost**, bạn có thể truy cập bằng 
 
 ## Liên kết hệ thống
 - **Back-End (GitHub)**: https://github.com/LongMyNgoc/Pokemon-Dictionary-BE.git
-- **Back-End (Render)**: 
-- **Front-End (GitHub)**: 
-- **Front-End (Vercel)**:
+- **Back-End (Railway)**: https://pokemon-dictionary-be-production.up.railway.app/
+- **Front-End (GitHub)**: https://github.com/LongMyNgoc/Pokemon-Dictionary-App.git
 
 ## Đóng góp & Phát triển
 Chúng tôi luôn chào đón sự đóng góp từ cộng đồng! Nếu bạn có bất kỳ ý tưởng, cải tiến hoặc báo lỗi nào, vui lòng gửi qua hệ thống quản lý mã nguồn của dự án. Bạn cũng có thể liên hệ trực tiếp với nhóm phát triển để thảo luận thêm.
