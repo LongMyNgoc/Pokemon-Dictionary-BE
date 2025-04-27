@@ -1,5 +1,8 @@
+# pokemon_detail.py
+
 import httpx
 from utils.fetch_evolution_chain import fetch_evolution_chain, fetch_evolution_details
+from utils.get_pokemon_by_name_from_list import get_pokemon_by_name_from_list
 
 async def fetch_pokemon_details(pokemon_url, client):
     """Lấy chi tiết thông tin về Pokémon."""
@@ -12,7 +15,7 @@ async def fetch_pokemon_details(pokemon_url, client):
         name = detail_data["name"]
         types = [t["type"]["name"] for t in detail_data["types"]]
         abilities = [a["ability"]["name"] for a in detail_data["abilities"]]
-        stats = {stat["stat"]["name"]: stat["base_stat"] for stat in detail_data["stats"]}
+        stats = {stat["stat"]["name"]: stat["base_stat"] for stat in detail_data["stats"]}        
         moves = [m["move"]["name"] for m in detail_data["moves"]]
         
         # Lấy thông tin bổ sung
@@ -22,6 +25,11 @@ async def fetch_pokemon_details(pokemon_url, client):
 
         # Lấy URL chuỗi tiến hóa
         evolution_chain_url = detail_data["species"]["url"]
+        
+        # Lấy danh sách Pokémon từ get_pokemon_by_name_from_list
+        pokemon_list = await get_pokemon_by_name_from_list(name)
+
+        # Trả về dữ liệu chi tiết của Pokémon
         return {
             "pokemon_id": pokemon_id,
             "name": name,
@@ -33,6 +41,7 @@ async def fetch_pokemon_details(pokemon_url, client):
             "abilities": abilities,
             "stats": stats,
             "moves": moves,
+            "pokemon_list": pokemon_list  # Thêm danh sách Pokémon vào kết quả trả về
         }
     return None
 
@@ -52,6 +61,7 @@ async def fetch_detail(pokemon):
             abilities = pokemon_details["abilities"]
             stats = pokemon_details["stats"]
             moves = pokemon_details["moves"]
+            pokemon_list = pokemon_details["pokemon_list"]
 
             # Lấy chuỗi tiến hóa
             evolution_chain = await fetch_evolution_chain(evolution_chain_url, client)
@@ -78,5 +88,6 @@ async def fetch_detail(pokemon):
                 "abilities": abilities,
                 "stats": stats,
                 "moves": moves,
+                "pokemon_list": pokemon_list
             }
     return None

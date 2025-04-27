@@ -3,6 +3,7 @@
 from fastapi import APIRouter, HTTPException
 from services.pokemon_list import get_all_pokemons
 from services.pokemon_detail import get_pokemon_by_id
+from services.pokemon_form import get_all_pokemons_form
 
 pokemon_router = APIRouter()
 
@@ -10,6 +11,10 @@ pokemon_router = APIRouter()
 @pokemon_router.get("/pokemons")
 async def get_pokemons():
     return await get_all_pokemons()
+
+@pokemon_router.get("/form_pokemons")
+async def get_pokemons():
+    return await get_all_pokemons_form()
 
 @pokemon_router.get("/pokemon/{pokemon_id}")
 async def get_pokemon(pokemon_id: int):
