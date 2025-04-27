@@ -1,4 +1,4 @@
-from utils.http_pokemon_detail import fetch_detail
+from utils.pokemon_detail.http_pokemon_detail import fetch_detail
 
 async def get_pokemon_by_id(pokemon_id: int):
     """

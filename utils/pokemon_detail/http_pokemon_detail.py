@@ -1,8 +1,8 @@
 # pokemon_detail.py
 
 import httpx
-from utils.fetch_evolution_chain import fetch_evolution_chain, fetch_evolution_details
-from utils.get_pokemon_by_name_from_list import get_pokemon_by_name_from_list
+from utils.pokemon_detail.fetch_evolution_chain import fetch_evolution_chain, fetch_evolution_details
+from utils.fetch_pokemon_form.get_pokemon_by_name_from_list import get_pokemon_by_name_from_list
 
 async def fetch_pokemon_details(pokemon_url, client):
     """Lấy chi tiết thông tin về Pokémon."""

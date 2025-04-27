@@ -1,8 +1,8 @@
 # app/services/pokemon_service.py
 
 import asyncio
-from utils.fetch_pokemon_form import fetch_detail
-from utils.fetch_page_data import fetch_page_data
+from utils.fetch_pokemon_form.fetch_pokemon_form import fetch_detail
+from utils.fetch_page_data.fetch_page_data import fetch_page_data
 
 async def get_all_pokemons_form():
     base_url = "https://pokeapi.co/api/v2/pokemon"

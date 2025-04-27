@@ -1,8 +1,8 @@
 # app/services/pokemon_service.py
 
 import asyncio
-from utils.http_pokemon_list import fetch_detail
-from utils.fetch_page_data import fetch_page_data
+from utils.pokemon_list.http_pokemon_list import fetch_detail
+from utils.fetch_page_data.fetch_page_data import fetch_page_data
 
 async def get_all_pokemons():
     base_url = "https://pokeapi.co/api/v2/pokemon"
