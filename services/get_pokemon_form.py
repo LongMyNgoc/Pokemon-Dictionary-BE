@@ -1,4 +1,4 @@
-from utils.fetch_pokemon_form.http_pokemon_form_detail import fetch_detail
+from utils.pokemon_form.http_pokemon_form_detail import fetch_detail
 
 async def get_pokemon_form_by_id(pokemon_id: int):
     """

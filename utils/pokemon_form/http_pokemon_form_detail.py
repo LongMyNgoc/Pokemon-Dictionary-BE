@@ -1,4 +1,4 @@
-from utils.fetch_pokemon_form.fetch_pokemon_form_detail import fetch_pokemon_form_details
+from utils.pokemon_form.fetch_pokemon_form_detail import fetch_pokemon_form_details
 import httpx
 
 async def fetch_detail(pokemon):
