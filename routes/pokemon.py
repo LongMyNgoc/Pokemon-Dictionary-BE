@@ -4,6 +4,7 @@ from fastapi import APIRouter, HTTPException
 from services.pokemon_list import get_all_pokemons
 from services.pokemon_detail import get_pokemon_by_id
 from services.pokemon_form import get_all_pokemons_form
+from services.pokemon_form_by_name import get_pokemon_form_by_name
 from services.get_pokemon_form import get_pokemon_form_by_id
 
 pokemon_router = APIRouter()
@@ -30,3 +31,8 @@ async def get_pokemon(pokemon_id: int):
     if not pokemon:
         raise HTTPException(status_code=404, detail="Pokemon not found")
     return pokemon
+
+@pokemon_router.get("/pokemon_form_by_name/{name}")
+async def get_pokemon_form_by_name_route(name: str):
+    pokemons = await get_pokemon_form_by_name(name)
+    return pokemons

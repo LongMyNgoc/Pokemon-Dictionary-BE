@@ -13,17 +13,10 @@ async def fetch_detail(pokemon):
             types = pokemon_details["types"]
             height = pokemon_details["height"]
             weight = pokemon_details["weight"]
-            species = pokemon_details["species"]
             description = pokemon_details["description"]
-            habitat = pokemon_details["habitat"]
-            shape = pokemon_details["shape"]
-            growth_rate = pokemon_details["growth_rate"]
-            capture_rate = pokemon_details["capture_rate"]
-            base_happiness = pokemon_details["base_happiness"]
             abilities = pokemon_details["abilities"]
             stats = pokemon_details["stats"]
             moves = pokemon_details["moves"]
-            #pokemon_list = pokemon_details["pokemon_list"]
 
             # Lấy chuỗi tiến hóa
             evolution_chain = await fetch_evolution_chain(pokemon_details["species_url"], client)
@@ -45,17 +38,10 @@ async def fetch_detail(pokemon):
                 "image_url": image_url,
                 "height": height,
                 "weight": weight,
-                "species": species,
                 "description": description,
-                "habitat": habitat,
-                "shape": shape,
-                "growth_rate": growth_rate,
-                "capture_rate": capture_rate,
-                "base_happiness": base_happiness,
                 "evolution_chain": evolution_details,
                 "abilities": abilities,
                 "stats": stats,
                 "moves": moves,
-                #"pokemon_list": pokemon_list
             }
     return None

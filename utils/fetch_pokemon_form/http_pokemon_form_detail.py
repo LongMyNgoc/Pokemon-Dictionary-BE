@@ -14,11 +14,6 @@ async def fetch_detail(pokemon):
             weight = pokemon_details["weight"]
             species = pokemon_details["species"]
             description = pokemon_details["description"]
-            habitat = pokemon_details["habitat"]
-            shape = pokemon_details["shape"]
-            growth_rate = pokemon_details["growth_rate"]
-            capture_rate = pokemon_details["capture_rate"]
-            base_happiness = pokemon_details["base_happiness"]
             abilities = pokemon_details["abilities"]
             stats = pokemon_details["stats"]
             moves = pokemon_details["moves"]
@@ -34,11 +29,6 @@ async def fetch_detail(pokemon):
                 "weight": weight,
                 "species": species,
                 "description": description,
-                "habitat": habitat,
-                "shape": shape,
-                "growth_rate": growth_rate,
-                "capture_rate": capture_rate,
-                "base_happiness": base_happiness,
                 "abilities": abilities,
                 "stats": stats,
                 "moves": moves,

@@ -23,8 +23,7 @@ async def fetch_pokemon_form_details(pokemon_url, client):
 
         # Gọi API species để lấy thêm thông tin
         species_response = await client.get(species_url)
-        description = habitat = shape = growth_rate = None
-        capture_rate = base_happiness = None
+        description = None
 
         if species_response.status_code == 200:
             species_data = species_response.json()
@@ -37,21 +36,6 @@ async def fetch_pokemon_form_details(pokemon_url, client):
             )
             description = flavor_text_entry["flavor_text"].replace('\n', ' ').replace('\f', ' ') if flavor_text_entry else None
 
-            # Habitat
-            habitat = species_data["habitat"]["name"] if species_data["habitat"] else None
-
-            # Shape
-            shape = species_data["shape"]["name"] if species_data["shape"] else None
-
-            # Growth Rate
-            growth_rate = species_data["growth_rate"]["name"] if species_data["growth_rate"] else None
-
-            # Capture Rate
-            capture_rate = species_data.get("capture_rate")
-
-            # Base Happiness
-            base_happiness = species_data.get("base_happiness")
-
         # Trả về dữ liệu chi tiết của Pokémon
         return {
             "pokemon_id": pokemon_id,
@@ -63,11 +47,6 @@ async def fetch_pokemon_form_details(pokemon_url, client):
             "species": species_name,
             "species_url": species_url,
             "description": description,
-            "habitat": habitat,
-            "shape": shape,
-            "growth_rate": growth_rate,
-            "capture_rate": capture_rate,
-            "base_happiness": base_happiness,
             "abilities": abilities,
             "stats": stats,
             "moves": moves,
