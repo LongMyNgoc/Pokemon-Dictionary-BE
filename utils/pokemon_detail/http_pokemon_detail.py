@@ -23,7 +23,7 @@ async def fetch_detail(pokemon):
             abilities = pokemon_details["abilities"]
             stats = pokemon_details["stats"]
             moves = pokemon_details["moves"]
-            pokemon_list = pokemon_details["pokemon_list"]
+            #pokemon_list = pokemon_details["pokemon_list"]
 
             # Lấy chuỗi tiến hóa
             evolution_chain = await fetch_evolution_chain(pokemon_details["species_url"], client)
@@ -56,6 +56,6 @@ async def fetch_detail(pokemon):
                 "abilities": abilities,
                 "stats": stats,
                 "moves": moves,
-                "pokemon_list": pokemon_list
+                #"pokemon_list": pokemon_list
             }
     return None

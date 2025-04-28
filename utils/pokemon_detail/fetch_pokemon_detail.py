@@ -1,4 +1,4 @@
-from utils.fetch_pokemon_form.get_pokemon_by_name_from_list import get_pokemon_by_name_from_list
+#from utils.fetch_pokemon_form.get_pokemon_by_name_from_list import get_pokemon_by_name_from_list
 
 async def fetch_pokemon_details(pokemon_url, client):
     """Lấy chi tiết thông tin về Pokémon."""
@@ -54,7 +54,7 @@ async def fetch_pokemon_details(pokemon_url, client):
             base_happiness = species_data.get("base_happiness")
         
         # Lấy danh sách Pokémon từ get_pokemon_by_name_from_list
-        pokemon_list = await get_pokemon_by_name_from_list(name)
+        #pokemon_list = await get_pokemon_by_name_from_list(name)
 
         # Trả về dữ liệu chi tiết của Pokémon
         return {
@@ -74,6 +74,6 @@ async def fetch_pokemon_details(pokemon_url, client):
             "abilities": abilities,
             "stats": stats,
             "moves": moves,
-            "pokemon_list": pokemon_list
+            #"pokemon_list": pokemon_list
         }
     return None
