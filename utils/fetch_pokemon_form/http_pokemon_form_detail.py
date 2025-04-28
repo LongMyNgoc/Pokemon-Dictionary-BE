@@ -1,12 +1,11 @@
-from utils.pokemon_detail.fetch_pokemon_detail import fetch_pokemon_details
-from utils.pokemon_detail.fetch_evolution_chain import fetch_evolution_chain, fetch_evolution_details
+from utils.fetch_pokemon_form.fetch_pokemon_form_detail import fetch_pokemon_form_details
 import httpx
 
 async def fetch_detail(pokemon):
     """Hàm chính để lấy chi tiết Pokémon và tiến hóa."""
     async with httpx.AsyncClient() as client:
         # Lấy chi tiết Pokémon
-        pokemon_details = await fetch_pokemon_details(pokemon["url"], client)
+        pokemon_details = await fetch_pokemon_form_details(pokemon["url"], client)
         if pokemon_details:
             pokemon_id = pokemon_details["pokemon_id"]
             name = pokemon_details["name"]
@@ -23,19 +22,7 @@ async def fetch_detail(pokemon):
             abilities = pokemon_details["abilities"]
             stats = pokemon_details["stats"]
             moves = pokemon_details["moves"]
-            pokemon_list = pokemon_details["pokemon_list"]
-
-            # Lấy chuỗi tiến hóa
-            evolution_chain = await fetch_evolution_chain(pokemon_details["species_url"], client)
-
-            # Lấy thông tin tiến hóa chi tiết
-            evolution_details = []
-            if evolution_chain:
-                evolution_details = await fetch_evolution_details(evolution_chain, client)
-
-            # Định dạng ID và tạo URL ảnh
-            formatted_id = str(pokemon_id).zfill(3)
-            image_url = f"https://assets.pokemon.com/assets/cms2/img/pokedex/full/{formatted_id}.png"
+            image_url = pokemon_details["image_url"]
 
             # Trả về dữ liệu chi tiết
             return {
@@ -52,10 +39,8 @@ async def fetch_detail(pokemon):
                 "growth_rate": growth_rate,
                 "capture_rate": capture_rate,
                 "base_happiness": base_happiness,
-                "evolution_chain": evolution_details,
                 "abilities": abilities,
                 "stats": stats,
                 "moves": moves,
-                "pokemon_list": pokemon_list
             }
     return None
