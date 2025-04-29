@@ -44,7 +44,6 @@ async def fetch_pokemon_form_details(pokemon_url, client):
             "image_url": image_url,
             "height": height,
             "weight": weight,
-            "species": species_name,
             "species_url": species_url,
             "description": description,
             "abilities": abilities,

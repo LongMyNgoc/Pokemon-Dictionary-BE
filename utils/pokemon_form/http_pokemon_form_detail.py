@@ -1,4 +1,5 @@
 from utils.pokemon_form.fetch_pokemon_form_detail import fetch_pokemon_form_details
+from utils.pokemon_detail.fetch_evolution_chain import fetch_evolution_chain, fetch_evolution_details
 import httpx
 
 async def fetch_detail(pokemon):
@@ -12,12 +13,19 @@ async def fetch_detail(pokemon):
             types = pokemon_details["types"]
             height = pokemon_details["height"]
             weight = pokemon_details["weight"]
-            species = pokemon_details["species"]
             description = pokemon_details["description"]
             abilities = pokemon_details["abilities"]
             stats = pokemon_details["stats"]
             moves = pokemon_details["moves"]
             image_url = pokemon_details["image_url"]
+            
+            evolution_chain = await fetch_evolution_chain(pokemon_details["species_url"], client)
+
+            # Lấy thông tin tiến hóa chi tiết
+            evolution_details = []
+            if evolution_chain:
+                evolution_details = await fetch_evolution_details(evolution_chain, client)
+
 
             # Trả về dữ liệu chi tiết
             return {
@@ -27,8 +35,8 @@ async def fetch_detail(pokemon):
                 "image_url": image_url,
                 "height": height,
                 "weight": weight,
-                "species": species,
                 "description": description,
+                "evolution_chain": evolution_details,
                 "abilities": abilities,
                 "stats": stats,
                 "moves": moves,
