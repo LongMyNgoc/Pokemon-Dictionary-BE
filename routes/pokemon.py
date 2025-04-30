@@ -6,6 +6,7 @@ from services.pokemon_detail import get_pokemon_by_id
 from services.pokemon_form import get_all_pokemons_form
 from services.pokemon_form_by_name import get_pokemon_form_by_name
 from services.get_pokemon_form import get_pokemon_form_by_id
+from services.pokemon_move import get_pokemon_move_by_id
 
 pokemon_router = APIRouter()
 
@@ -36,3 +37,10 @@ async def get_pokemon(pokemon_id: int):
 async def get_pokemon_form_by_name_route(name: str):
     pokemons = await get_pokemon_form_by_name(name)
     return pokemons
+
+@pokemon_router.get("/pokemon_move/{pokemon_id}")
+async def get_pokemon(pokemon_id: int):
+    pokemon = await get_pokemon_move_by_id(pokemon_id)
+    if not pokemon:
+        raise HTTPException(status_code=404, detail="Pokemon not found")
+    return pokemon

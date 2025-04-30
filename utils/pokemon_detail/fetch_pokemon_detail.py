@@ -12,7 +12,6 @@ async def fetch_pokemon_details(pokemon_url, client):
         types = [t["type"]["name"] for t in detail_data["types"]]
         abilities = [a["ability"]["name"] for a in detail_data["abilities"]]
         stats = {stat["stat"]["name"]: stat["base_stat"] for stat in detail_data["stats"]}
-        moves = [m["move"]["name"] for m in detail_data["moves"]]
         
         # Lấy thông tin bổ sung
         height = detail_data["height"]
@@ -47,6 +46,5 @@ async def fetch_pokemon_details(pokemon_url, client):
             "description": description,
             "abilities": abilities,
             "stats": stats,
-            "moves": moves,
         }
     return None
